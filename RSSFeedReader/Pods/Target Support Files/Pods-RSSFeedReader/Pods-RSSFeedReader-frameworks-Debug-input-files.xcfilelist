@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-RSSFeedReader/Pods-RSSFeedReader-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ARChromeActivity/ARChromeActivity.framework
+${BUILT_PRODUCTS_DIR}/KINWebBrowser/KINWebBrowser.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/MWFeedParser/MWFeedParser.framework
+${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
+${BUILT_PRODUCTS_DIR}/TUSafariActivity/TUSafariActivity.framework

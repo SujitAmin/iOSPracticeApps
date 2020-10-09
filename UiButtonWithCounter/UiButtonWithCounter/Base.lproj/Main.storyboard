@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UiButtonWithCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAP-Ns-Kjk">
+                                <rect key="frame" x="20" y="433" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8bb-kc-rTu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdz-zE-DoO">
+                                <rect key="frame" x="20" y="84" width="374" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Text Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tie-lu-0Pt">
+                                <rect key="frame" x="20" y="140" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="d4a-Ph-N7h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JAP-Ns-Kjk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Za-H6-Dbi"/>
+                            <constraint firstItem="Tie-lu-0Pt" firstAttribute="top" secondItem="Sdz-zE-DoO" secondAttribute="bottom" constant="20" id="Fqg-KB-y5N"/>
+                            <constraint firstItem="Tie-lu-0Pt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Nlv-4x-vGU"/>
+                            <constraint firstItem="JAP-Ns-Kjk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Pl2-5k-isp"/>
+                            <constraint firstItem="Sdz-zE-DoO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="QwT-GJ-e5O"/>
+                            <constraint firstItem="Sdz-zE-DoO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SQL-yy-0Jg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sdz-zE-DoO" secondAttribute="trailing" constant="20" id="caA-nJ-FNW"/>
+                            <constraint firstItem="Sdz-zE-DoO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fN0-fQ-VVT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tie-lu-0Pt" secondAttribute="trailing" constant="20" id="klU-g9-hmI"/>
+                            <constraint firstItem="JAP-Ns-Kjk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="mvd-SU-SVn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JAP-Ns-Kjk" secondAttribute="trailing" constant="20" id="rPG-lj-EA6"/>
+                            <constraint firstItem="Tie-lu-0Pt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wVq-h0-IrP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="JAP-Ns-Kjk" id="krK-9Q-7xo"/>
+                        <outlet property="label" destination="Sdz-zE-DoO" id="fR7-oe-RZC"/>
+                        <outlet property="textView" destination="Tie-lu-0Pt" id="y1E-Ic-vl6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
+        </scene>
+    </scenes>
+</document>

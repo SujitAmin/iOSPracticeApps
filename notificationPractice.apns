@@ -1,0 +1,40 @@
+{
+   "Simulator Target Bundle": "in.yocket",
+    "data": {
+        "notification_type_id": "7",
+        "title": "Hello shreyansh",
+        "notification_description": "this is a test",
+        "content": "this is a test",
+        "sent_at": "2020-09-28T10:39:11+00:00",
+        "type": {
+            "category": 7
+        },
+        "action_parameters": {
+            "user_name": "Upcoming event",
+            "user_id": null
+        },
+        "user_id": 94509,
+        "id": 94509,
+        "success_count": 2
+    },
+    "content_available": true,
+    "priority": "high",
+    "aps": {
+        "alert": "Hello shreyansh",
+        "body": "this is a test",
+        "badge": 1,
+        "sound": "default",
+        "category": "CustomSamplePush",
+        "mutable-content": 1
+    },
+    "image_link": "https://foo.bar/pizza-monster.png",
+    "type": {
+        "category": 7
+    },
+    "registration_ids": [
+        "dFOLw4vumyE:APA91bHZYxbzDNjYwbjSwxT4qBQ3PJTj0Wf7r-9vuWf_75FH2pzbq737Gx7ly-BlWBcv16qkJlGbZT-RxVwHkC1V943UPjnvhHfEd35RS2J-VABCbt-XGHHJvmKO8AQslsFcy-3KcEnw",
+        "c24r4nbq6WE:APA91bHYgnaz7qWiQJCZFX809jX7zKCXLS_X8NKn2SCet36lC5SRhUZ2yVOG83_6ls8xUU1W3D-5EmjaU6ezSciRkQ_51J5VCkax-1Gr4GQruMfP0FKUvJeZde3yfwAynGPG4KkVoXYG"
+    ]
+}
+
+

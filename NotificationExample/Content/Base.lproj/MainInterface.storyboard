@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notification View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="Content" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5C-yr-clT">
+                                <rect key="frame" x="0.0" y="239" width="320" height="61"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="If5-Y3-aHz"/>
+                                </constraints>
+                                <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ui-9n-jsd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="239"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="239" id="SZj-7T-QDO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3ui-9n-jsd" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="87O-4e-P2j"/>
+                            <constraint firstItem="y5C-yr-clT" firstAttribute="top" secondItem="3ui-9n-jsd" secondAttribute="bottom" id="YlB-ve-mVt"/>
+                            <constraint firstItem="3ui-9n-jsd" firstAttribute="trailing" secondItem="2BE-c3-nQJ" secondAttribute="trailing" id="ZLe-zB-S0N"/>
+                            <constraint firstItem="y5C-yr-clT" firstAttribute="bottom" secondItem="2BE-c3-nQJ" secondAttribute="bottom" id="bCw-eG-7EC"/>
+                            <constraint firstItem="3ui-9n-jsd" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" id="nT7-xw-Zct"/>
+                            <constraint firstItem="y5C-yr-clT" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="pHJ-cv-1fn"/>
+                            <constraint firstItem="y5C-yr-clT" firstAttribute="trailing" secondItem="2BE-c3-nQJ" secondAttribute="trailing" id="xTr-Ei-3DZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2BE-c3-nQJ"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="300"/>
+                    <connections>
+                        <outlet property="imageView" destination="3ui-9n-jsd" id="AlR-p5-FhQ"/>
+                        <outlet property="label" destination="y5C-yr-clT" id="eGF-2J-Cia"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="106.47321428571428"/>
+        </scene>
+    </scenes>
+</document>
