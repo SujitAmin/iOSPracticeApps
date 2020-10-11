@@ -33,6 +33,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
                     }
                     DispatchQueue.main.async {
                         self?.imageView.image = UIImage(data: data)
+                        print("I am Good")
                     }
                 }
             }
