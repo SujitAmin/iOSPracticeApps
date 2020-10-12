@@ -10,36 +10,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="TodoItemTableViewCell" interfaceStyle="light" id="iN0-l3-epB" customClass="TodoItemTableViewCell" customModule="RxSwiftiVishYoutube" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="D81-ZI-XkK">
-                    <rect key="frame" x="20" y="25" width="67" height="20.5"/>
+                    <rect key="frame" x="20" y="10" width="67" height="24"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JS-as-6Gd">
-                            <rect key="frame" x="0.0" y="0.0" width="8" height="20.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="8" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTd-LS-mV6">
-                            <rect key="frame" x="25" y="0.0" width="42" height="20.5"/>
+                            <rect key="frame" x="25" y="0.0" width="42" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20.5" id="ueE-Tm-qdr"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <accessibility key="accessibilityConfiguration" identifier="todoItemCellIdentifier"/>
             <constraints>
-                <constraint firstItem="D81-ZI-XkK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="UbY-uI-gPS"/>
-                <constraint firstItem="D81-ZI-XkK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fPc-R0-0Jr"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="D81-ZI-XkK" secondAttribute="bottom" constant="24.5" id="rUs-Sy-M8T"/>
+                <constraint firstItem="D81-ZI-XkK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="6gB-l0-UOg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="D81-ZI-XkK" secondAttribute="bottom" constant="10" id="9dc-Pg-s2w"/>
+                <constraint firstItem="D81-ZI-XkK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="b6s-dk-dTS"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

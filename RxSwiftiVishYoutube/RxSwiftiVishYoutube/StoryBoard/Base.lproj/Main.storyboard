@@ -16,50 +16,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WLr-GV-3Ri">
-                                <rect key="frame" x="0.0" y="97" width="414" height="547"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xUS-dG-290">
-                                <rect key="frame" x="0.0" y="652" width="414" height="210"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xUS-dG-290">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v1B-OQ-p6J">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8oh-bc-Tmv">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhz-fQ-VKB">
-                                        <rect key="frame" x="0.0" y="105" width="414" height="105"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                        <state key="normal" title="Add">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="55" width="414" height="45"/>
+                                        <color key="backgroundColor" red="1" green="0.46666666670000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="Add Item">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="onAddItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N8Y-zw-izy"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="NtB-Iu-cp7"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="53" id="5Il-hT-ldg"/>
-                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Utz-PY-scc"/>
-                            <constraint firstItem="xUS-dG-290" firstAttribute="top" secondItem="WLr-GV-3Ri" secondAttribute="bottom" constant="8" id="eod-Dy-y56"/>
-                            <constraint firstItem="xUS-dG-290" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gyF-Aq-eqU"/>
-                            <constraint firstItem="xUS-dG-290" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iKk-vK-4cQ"/>
-                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rXL-BK-Swo"/>
-                            <constraint firstItem="xUS-dG-290" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zaG-Lo-ncd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xUS-dG-290" secondAttribute="trailing" id="1AP-6Z-YrC"/>
+                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="top" secondItem="xUS-dG-290" secondAttribute="bottom" id="85d-Zd-JLr"/>
+                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Gb4-HU-yXz"/>
+                            <constraint firstItem="xUS-dG-290" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HMb-j2-jvo"/>
+                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="top" secondItem="xUS-dG-290" secondAttribute="bottom" id="JIh-4T-XD8"/>
+                            <constraint firstItem="xUS-dG-290" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jm3-4x-8p1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WLr-GV-3Ri" secondAttribute="bottom" constant="26" id="nL2-0d-Zrn"/>
+                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u9k-YW-XU9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="tableViewItems" destination="WLr-GV-3Ri" id="9kK-bC-l14"/>
-                        <outlet property="textFieldNewItem" destination="v1B-OQ-p6J" id="QOV-2s-r0K"/>
+                        <outlet property="textFieldNewItem" destination="8oh-bc-Tmv" id="QNM-SS-s9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

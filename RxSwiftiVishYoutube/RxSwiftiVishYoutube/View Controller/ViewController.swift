@@ -8,23 +8,26 @@
 
 import UIKit
 
+protocol TodoView : class {
+    func insertTodoItem()
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableViewItems: UITableView!
-    @IBOutlet weak var textFieldNewItem: UITextView!
+    @IBOutlet weak var textFieldNewItem: UITextField!
     
     var viewModel : TodoViewModel?
     let cellIdentifier = "todoItemCellIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setUpTableView()
-        
-        viewModel = TodoViewModel()
+        viewModel = TodoViewModel(view: self)
     }
     
     
+    /// sets up tableView
     fileprivate func setUpTableView() {
         tableViewItems.dataSource = self
         tableViewItems.delegate = self
@@ -32,8 +35,13 @@ class ViewController: UIViewController {
         tableViewItems.register(nib, forCellReuseIdentifier: cellIdentifier)
     }
     
+    /// button "Add Item"
+    /// - Parameter sender: UIButton
     @IBAction func onAddItem(_ sender: UIButton) {
         
+        guard let newTodoTextValue = textFieldNewItem.text else { return }
+        viewModel?.newTodoItem = newTodoTextValue
+        viewModel?.onAddTodoItem()
     }
 
 }
@@ -52,4 +60,22 @@ extension ViewController :  UITableViewDataSource, UITableViewDelegate {
         cell?.configureCell(withViewModel: itemViewModel!)
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemViewModel = viewModel?.items[indexPath.row]
+        (itemViewModel as? TodoItemViewDelegate)?.onItemSelected()
+    }
+    
+}
+extension ViewController : TodoView {
+    func insertTodoItem() {
+        guard let items = viewModel?.items else { return }
+        self.textFieldNewItem.text = viewModel?.newTodoItem!
+        
+        self.tableViewItems.beginUpdates()
+        self.tableViewItems.insertRows(at: [IndexPath(row: items.count - 1, section: 0)], with: .automatic)
+        self.tableViewItems.endUpdates()
+    }
+    
+    
 }

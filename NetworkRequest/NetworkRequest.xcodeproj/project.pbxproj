@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		84189C0124D1759E00A2E8C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84189BFF24D1759E00A2E8C6 /* LaunchScreen.storyboard */; };
 		84189C0C24D1759F00A2E8C6 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84189C0B24D1759E00A2E8C6 /* NetworkRequestTests.swift */; };
 		84189C1724D1759F00A2E8C6 /* NetworkRequestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84189C1624D1759F00A2E8C6 /* NetworkRequestUITests.swift */; };
+		84633B1225337106004E3088 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84633B1125337106004E3088 /* WebService.swift */; };
 		A7BE737D3CFFD06C2E2F2592 /* Pods_NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B745E0241AD65745EDDE369B /* Pods_NetworkRequest.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		84189C1224D1759F00A2E8C6 /* NetworkRequestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkRequestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84189C1624D1759F00A2E8C6 /* NetworkRequestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestUITests.swift; sourceTree = "<group>"; };
 		84189C1824D1759F00A2E8C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84633B1125337106004E3088 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		B745E0241AD65745EDDE369B /* Pods_NetworkRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,7 +89,6 @@
 				6E13DCC702DBDCA836A10F57 /* Pods-NetworkRequest.debug.xcconfig */,
 				7CC71500E1379B104E87FC9E /* Pods-NetworkRequest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -131,6 +132,7 @@
 				84189BFD24D1759E00A2E8C6 /* Assets.xcassets */,
 				84189BFF24D1759E00A2E8C6 /* LaunchScreen.storyboard */,
 				84189C0224D1759E00A2E8C6 /* Info.plist */,
+				84633B1125337106004E3088 /* WebService.swift */,
 			);
 			path = NetworkRequest;
 			sourceTree = "<group>";
@@ -330,6 +332,7 @@
 			files = (
 				84189BF924D1759C00A2E8C6 /* ViewController.swift in Sources */,
 				84189BF524D1759C00A2E8C6 /* AppDelegate.swift in Sources */,
+				84633B1225337106004E3088 /* WebService.swift in Sources */,
 				84189BF724D1759C00A2E8C6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
