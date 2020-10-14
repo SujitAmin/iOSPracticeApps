@@ -24,14 +24,9 @@ struct TodoItemViewModel : TodoItemPresentable{
 
 extension TodoItemViewModel : TodoItemViewDelegate {
     func onItemSelected() {
-        <#code#>
+        
     }
 }
-
-
-//protocol TodoItemViewDelegate {
-//    func onTodoItemAdded() -> ()
-//}
 
 protocol TodoViewDelegate {
     func onAddTodoItem()

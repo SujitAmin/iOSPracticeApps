@@ -77,5 +77,12 @@ extension ViewController : TodoView {
         self.tableViewItems.endUpdates()
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let removeAction = UIContextualAction(style: .normal, title: "Remove") { (action, sourceView, success: (Bool) -> Void) in
+            success(true)
+        }
+        removeAction.backgroundColor = UIColor.red
+        return UISwipeActionsConfiguration(actions: [removeAction])
+    }
     
 }
