@@ -10,6 +10,7 @@ import UIKit
 
 protocol TodoView : class {
     func insertTodoItem()
+    func removeTodoItem(index: Int)
 }
 
 class ViewController: UIViewController {
@@ -41,9 +42,13 @@ class ViewController: UIViewController {
         
         guard let newTodoTextValue = textFieldNewItem.text else { return }
         viewModel?.newTodoItem = newTodoTextValue
-        viewModel?.onAddTodoItem()
+        
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.viewModel?.onAddTodoItem()
+            
+        }
     }
-
+    
 }
 
 
@@ -66,23 +71,49 @@ extension ViewController :  UITableViewDataSource, UITableViewDelegate {
         (itemViewModel as? TodoItemViewDelegate)?.onItemSelected()
     }
     
-}
-extension ViewController : TodoView {
-    func insertTodoItem() {
-        guard let items = viewModel?.items else { return }
-        self.textFieldNewItem.text = viewModel?.newTodoItem!
-        
-        self.tableViewItems.beginUpdates()
-        self.tableViewItems.insertRows(at: [IndexPath(row: items.count - 1, section: 0)], with: .automatic)
-        self.tableViewItems.endUpdates()
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let itemViewModel = viewModel?.items[indexPath.row]
+        var menuActions : [UIContextualAction] = []
+        _ = itemViewModel?.menuItems?.map({ menuItem in
+            let menuAction = UIContextualAction(style: .normal, title: menuItem.title) { (action, sourceView, success: (Bool) -> Void) in
+                if let delegate = menuItem as? TodoMenuItemViewDelegate {
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        //  self.viewModel?.onDeleteItem(todoId: (itemViewModel?.id)!)
+                        delegate.onMenuItemSelected()
+                    }
+                }
+                success(true)
+            }
+            
+            menuAction.backgroundColor = menuItem.backColor?.hexColor
+            menuActions.append(contentsOf: [menuAction])
+        })
+        return UISwipeActionsConfiguration(actions: menuActions)
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let removeAction = UIContextualAction(style: .normal, title: "Remove") { (action, sourceView, success: (Bool) -> Void) in
-            success(true)
+}
+extension ViewController : TodoView {
+    func removeTodoItem(index: Int) {
+        DispatchQueue.main.async {
+            self.tableViewItems.beginUpdates()
+            self.tableViewItems.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            self.tableViewItems.endUpdates()
         }
-        removeAction.backgroundColor = UIColor.red
-        return UISwipeActionsConfiguration(actions: [removeAction])
     }
+    
+    
+    func insertTodoItem() {
+        guard let items = viewModel?.items else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.textFieldNewItem.text = self?.viewModel?.newTodoItem!
+            
+            self?.tableViewItems.beginUpdates()
+            self?.tableViewItems.insertRows(at: [IndexPath(row: items.count - 1, section: 0)], with: .automatic)
+            self?.tableViewItems.endUpdates()
+        }
+        
+    }
+    
+    
     
 }
