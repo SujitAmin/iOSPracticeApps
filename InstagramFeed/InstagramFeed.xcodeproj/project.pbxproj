@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		219C3956E9C2572AB3570FCF /* Pods_InstagramFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAA35DA153D1DA8760EAFB9 /* Pods_InstagramFeed.framework */; };
+		84497DED2538B9B600FD4879 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84497DEC2538B9B600FD4879 /* ImageCache.swift */; };
 		84525429253609F8007229DF /* NewFoodTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84525428253609F8007229DF /* NewFoodTypeViewController.swift */; };
 		8452542B253612E5007229DF /* FoodTypesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452542A253612E5007229DF /* FoodTypesDetailsViewController.swift */; };
 		8452542D253615E8007229DF /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452542C253615E8007229DF /* ImageCell.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		587432E11D7CFA2081A59FE0 /* Pods-InstagramFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFeed.release.xcconfig"; path = "Target Support Files/Pods-InstagramFeed/Pods-InstagramFeed.release.xcconfig"; sourceTree = "<group>"; };
+		84497DEC2538B9B600FD4879 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		84525428253609F8007229DF /* NewFoodTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFoodTypeViewController.swift; sourceTree = "<group>"; };
 		8452542A253612E5007229DF /* FoodTypesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTypesDetailsViewController.swift; sourceTree = "<group>"; };
 		8452542C253615E8007229DF /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		848565732534A34C00E90DEA = {
 			isa = PBXGroup;
 			children = (
+				84497DEC2538B9B600FD4879 /* ImageCache.swift */,
 				8485657E2534A34C00E90DEA /* InstagramFeed */,
 				8485657D2534A34C00E90DEA /* Products */,
 				B6C9624E44F48E87D61A9DEE /* Pods */,
@@ -240,6 +243,7 @@
 				845254332536253C007229DF /* FirestoreService.swift in Sources */,
 				8485659B2534D1B500E90DEA /* FoodType.swift in Sources */,
 				8485658A2534A34C00E90DEA /* InstagramFeed.xcdatamodeld in Sources */,
+				84497DED2538B9B600FD4879 /* ImageCache.swift in Sources */,
 				84525429253609F8007229DF /* NewFoodTypeViewController.swift in Sources */,
 				848565842534A34C00E90DEA /* FoodTypesViewController.swift in Sources */,
 				848565802534A34C00E90DEA /* AppDelegate.swift in Sources */,

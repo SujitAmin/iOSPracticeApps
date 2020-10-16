@@ -13,8 +13,13 @@ class FoodTypesTableViewCell: UITableViewCell {
     @IBOutlet weak var foodTypeImageView : UIImageView!
     @IBOutlet weak var foodTypeLabel : UILabel!
     
+    var imageCache : ImageCache?
+    
     func populateCell(with foodType: FoodType) {
         foodTypeLabel.text = foodType.title
+        imageCache?.getImage(named: foodType.mainImagePath, completion: { [weak self] (image) in
+            self?.foodTypeImageView.image = image
+        })
     }
 
 }

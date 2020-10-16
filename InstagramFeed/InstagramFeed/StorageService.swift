@@ -18,7 +18,7 @@ class  StorageService {
     
     
     func upload(_ image: UIImage, completion : @escaping (String) -> Void) {
-        let imageRef = imagesReference.child("images/\(Date().timeIntervalSince1970).jpg")
+        let imageRef = imagesReference.child("images/\(UUID().uuidString).jpg")
         guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
         
         imageRef.putData(imageData, metadata: nil) { (_, error) in
@@ -35,5 +35,23 @@ class  StorageService {
             }
             
         }
+    }
+    
+    func bulkUpload(_ images: [UIImage], completion: @escaping([String]) -> Void) {
+        
+        var imagePaths = [String]()
+        var counter = 0
+        
+        for image in images {
+            upload(image) { (urlPath) in
+                imagePaths.append(urlPath)
+                counter += 1
+                if counter == images.count {
+                    completion(imagePaths)
+                }
+            }
+        }
+        
+       // completion(imagePaths)
     }
 }

@@ -12,13 +12,10 @@ class ImageCell: UITableViewCell {
 
     @IBOutlet weak var foodImageView : UIImageView!
 
+    var imageCache : ImageCache?
     func populate(with imagePath : String) {
-        let url = URL(string: imagePath)!
-        do {
-            let data = try Data(contentsOf: url)
-            foodImageView.image = UIImage(data: data)
-        } catch {
-            print(error)
-        }
+        imageCache?.getImage(named: imagePath, completion: { [weak self] (image) in
+            self?.foodImageView.image = image
+        })
     }
 }

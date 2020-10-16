@@ -47,20 +47,20 @@
                                                 </constraints>
                                             </view>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="iUq-b0-2mI"/>
+                                                <constraint firstAttribute="height" constant="60" id="hX9-lD-UEn"/>
                                             </constraints>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
                                     </subviews>
                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="leading" secondItem="nv8-li-roD" secondAttribute="leading" id="D78-Xm-F1h"/>
-                                        <constraint firstAttribute="trailing" secondItem="3rS-pm-RdL" secondAttribute="trailing" id="VEu-My-99h"/>
-                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="top" secondItem="nv8-li-roD" secondAttribute="top" id="fHt-Ov-ueM"/>
-                                        <constraint firstAttribute="bottom" secondItem="eVq-Qn-YkW" secondAttribute="bottom" id="h9h-oc-3Bm"/>
-                                        <constraint firstItem="eVq-Qn-YkW" firstAttribute="leading" secondItem="nv8-li-roD" secondAttribute="leading" id="hdl-ZZ-e5u"/>
-                                        <constraint firstAttribute="trailing" secondItem="eVq-Qn-YkW" secondAttribute="trailing" id="tBc-GK-U1i"/>
-                                        <constraint firstAttribute="bottom" secondItem="3rS-pm-RdL" secondAttribute="bottom" id="xcg-0W-TdD"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="centerY" secondItem="nv8-li-roD" secondAttribute="centerY" id="4bw-a7-sOw"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="trailing" secondItem="eVq-Qn-YkW" secondAttribute="trailing" id="H5i-SO-jqq"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="leading" secondItem="nv8-li-roD" secondAttribute="leadingMargin" constant="-20" id="IYR-PL-dpz"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="top" secondItem="nv8-li-roD" secondAttribute="topMargin" constant="-11" id="LLc-Pg-TAP"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="leading" secondItem="eVq-Qn-YkW" secondAttribute="leading" id="YJB-xY-zAx"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="centerX" secondItem="nv8-li-roD" secondAttribute="centerX" id="e69-9x-JvI"/>
+                                        <constraint firstItem="3rS-pm-RdL" firstAttribute="bottom" secondItem="eVq-Qn-YkW" secondAttribute="bottom" id="pzu-47-Rn2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -83,7 +83,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="LMv-On-aY3" kind="show" id="yLY-ej-U62"/>
+                        <segue destination="LMv-On-aY3" kind="show" identifier="segue" id="yLY-ej-U62"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6p-Hs-3fx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,7 +106,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h1n-W8-GMw">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h1n-W8-GMw">
                                             <rect key="frame" x="8" y="8" width="398" height="398"/>
                                         </imageView>
                                     </subviews>

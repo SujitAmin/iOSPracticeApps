@@ -12,15 +12,16 @@ class FoodTypesDetailsViewController: UITableViewController {
 
     var foodType: FoodType!
     var foodImagePaths : [String] {return foodType.allImagePaths}
+    var imageCache : ImageCache!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = tableView.bounds.width
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +32,9 @@ class FoodTypesDetailsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath)
         
         let imageCell = cell as? ImageCell
+        imageCell?.imageCache = imageCache
         let imagePath = foodImagePaths[indexPath.row]
+        imageCell?.populate(with: imagePath)
         return cell
     }
     

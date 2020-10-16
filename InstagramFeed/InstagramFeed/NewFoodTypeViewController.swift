@@ -37,7 +37,18 @@ class NewFoodTypeViewController: UIViewController {
         present(pickerController, animated: true)
     }
     @IBAction func saveFoodType(_ sender : UIButton) {
-        
+        guard let title = titleTextField.text,
+            let mainImage = mainImageButton.backgroundImage(for: .normal),
+            let firstImage = firstImageButton.backgroundImage(for: .normal),
+            let secondImage = secondImageButton.backgroundImage(for: .normal)
+            else { return }
+        storage.bulkUpload([mainImage, firstImage, secondImage]) { [weak self] (urlPaths) in
+            let foodType = FoodType(mainImagePath: urlPaths[0] , title: title, otherImagePaths: [urlPaths[1], urlPaths[2]])
+            self?.firestore.save(foodType, completion: { (result) in
+                print(result)
+                self?.navigationController?.popViewController(animated: true)
+            })
+        }
     }
 }
 extension NewFoodTypeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

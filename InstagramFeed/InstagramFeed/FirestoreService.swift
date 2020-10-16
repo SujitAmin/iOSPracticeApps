@@ -12,14 +12,20 @@ import FirebaseFirestore
 class  FirestoreService {
     private init() {}
     static let shared = FirestoreService()
-   
-    private let database = Firestore.firestore()
+    private var database : Firestore!
     private lazy var foodTypesReference = database.collection("foodTypes")
     
+    func configure() {
+        database = Firestore.firestore()
+    }
+    
     func save(_ foodType: FoodType, completion: @escaping (Result<Bool, NSError>) -> Void) {
+        var otherImagePathsDict = [String: String]()
+        
+        foodType.otherImagePaths.forEach{ otherImagePathsDict[ UUID().uuidString] = $0 }
         foodTypesReference.addDocument(data: ["mainImagePath" : foodType.mainImagePath,
                                               "title": foodType.title,
-                                              "otherImagePaths": foodType.otherImagePaths.enumerated()
+                                              "otherImagePaths": otherImagePathsDict
         ]) { (error) in
             if let unwrappedError = error {
                 completion(.failure(unwrappedError as NSError))
@@ -38,8 +44,8 @@ class  FirestoreService {
             for document in documents {
                 let documentData = document.data()
                 guard let mainImagePath = documentData["mainImagePath"] as? String,
-                      let title = document["title"] as? String,
-                      let otherImagePathsDict = documentData["otherImagePaths"] as? [Int: String]  else {
+                      let title = documentData["title"]  as? String,
+                      let otherImagePathsDict = documentData["otherImagePaths"] as? [String: String]  else {
                     continue
                 }
                 
@@ -48,7 +54,7 @@ class  FirestoreService {
                 
                 foodTypes.append(foodType)
             }
-            
+            completion(foodTypes)
         }
     }
 }
