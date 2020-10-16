@@ -11,6 +11,8 @@ import UIKit
 protocol TodoView : class {
     func insertTodoItem()
     func removeTodoItem(index: Int)
+    func updateTodoItem(index: Int)
+    func reloadItems()
 }
 
 class ViewController: UIViewController {
@@ -93,6 +95,12 @@ extension ViewController :  UITableViewDataSource, UITableViewDelegate {
     
 }
 extension ViewController : TodoView {
+    func updateTodoItem(index: Int) {
+        DispatchQueue.main.async {
+            self.tableViewItems.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        }
+    }
+    
     func removeTodoItem(index: Int) {
         DispatchQueue.main.async {
             self.tableViewItems.beginUpdates()
@@ -114,6 +122,10 @@ extension ViewController : TodoView {
         
     }
     
-    
+    func reloadItems() {
+        DispatchQueue.main.async {
+            self.tableViewItems.reloadData()
+        }
+    }
     
 }

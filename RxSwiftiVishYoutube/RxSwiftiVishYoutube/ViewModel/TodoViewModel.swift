@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol TodoMenuItemViewPresentable {
-    var title : String? { get }
+    var title : String? { get set }
     var backColor : String? { get }
 }
 
@@ -53,10 +54,12 @@ protocol TodoItemViewDelegate : class {
 protocol TodoItemPresentable {
     var id : String? { get }
     var textValue : String? { get }
+    var isDone : Bool? { get set }
     var menuItems : [TodoMenuItemViewPresentable]? { get }
 }
 
 class TodoItemViewModel : TodoItemPresentable{
+    var isDone: Bool? = false
     var menuItems: [TodoMenuItemViewPresentable]? = []
     var id: String? = "0"
     var textValue: String?
@@ -73,9 +76,8 @@ class TodoItemViewModel : TodoItemPresentable{
         removeMenuItem.backColor = "ff0000"
         
         let doneMenuItem = DoneMenuItemViewModel(parentViewModel: self)
-        doneMenuItem.title = "Done"
-        doneMenuItem.backColor = "000000"
-        
+        doneMenuItem.title = isDone! ? "Undone" : "Done"
+        doneMenuItem.backColor = "0000ff"
         menuItems?.append(contentsOf: [removeMenuItem, doneMenuItem])
     }
 }
@@ -122,6 +124,32 @@ class TodoViewModel : TodoViewPresentable {
 extension TodoViewModel : TodoViewDelegate {
     func onTodoDone(todoId: String) {
         print("Todo Item done with id = \(todoId)")
+        guard let index = self.items.index(where:  {$0.id! == todoId}) else {
+            print("Index: does not exist")
+            return
+        }
+        var todoItem = self.items[index]
+        todoItem.isDone = !(todoItem.isDone)!
+        if var doneMenuItem = todoItem.menuItems?.filter({ (todoMenuItem) -> Bool in
+            todoMenuItem is DoneMenuItemViewModel
+        }).first {
+            doneMenuItem.title = todoItem.isDone! ? "Undone" : "Done"
+        }
+        
+        self.items.sort(by: {
+            
+            if !($0.isDone!) && !($1.isDone!) {
+                return $0.id! < $1.id!
+            }
+            
+            if $0.isDone! && $1.isDone! {
+                return $0.id! < $1.id!
+            }
+            
+            return !($0.isDone!) && $1.isDone!
+        })
+        
+        self.view?.reloadItems()
     }
     
     func onAddTodoItem() {
