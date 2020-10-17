@@ -24,53 +24,45 @@ class ViewController: UIViewController {
     
     var viewModel : TodoViewModel?
     let cellIdentifier = "todoItemCellIdentifier"
+    let nibTodoItemCell = "TodoItemTableViewCell"
     
+    fileprivate func setUpTableView() {
+        tableViewItems.dataSource = self
+        tableViewItems.delegate = self
+        let nib = UINib(nibName: nibTodoItemCell, bundle: nil)
+        tableViewItems.register(nib, forCellReuseIdentifier: cellIdentifier)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
         viewModel = TodoViewModel(view: self)
     }
     
-    
-    /// sets up tableView
-    fileprivate func setUpTableView() {
-        tableViewItems.dataSource = self
-        tableViewItems.delegate = self
-        let nib = UINib(nibName: "TodoItemTableViewCell", bundle: nil)
-        tableViewItems.register(nib, forCellReuseIdentifier: cellIdentifier)
-    }
-    
-    /// button "Add Item"
-    /// - Parameter sender: UIButton
     @IBAction func onAddItem(_ sender: UIButton) {
         guard let newTodoTextValue = textFieldNewItem.text else { return }
         viewModel?.newTodoItem = newTodoTextValue
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.viewModel?.onAddTodoItem()
-            
         }
     }
-    
 }
 
 //MARK:- Extension
 extension ViewController :  UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.items.count ?? 0
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TodoItemTableViewCell
-        
-        let itemViewModel = viewModel?.items[indexPath.row]
-        cell?.configureCell(withViewModel: itemViewModel!)
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoItemTableViewCell
+        guard let itemViewModel = viewModel?.items[indexPath.row] else { return UITableViewCell() }
+        cell.configureCell(withViewModel: itemViewModel)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemViewModel = viewModel?.items[indexPath.row]
-        (itemViewModel as? TodoItemViewDelegate)?.onItemSelected()
+        let itemViewModel = viewModel?.items[indexPath.row] as? TodoItemViewDelegate
+        itemViewModel?.onItemSelected()
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -85,7 +77,6 @@ extension ViewController :  UITableViewDataSource, UITableViewDelegate {
                 }
                 success(true)
             }
-            
             menuAction.backgroundColor = menuItem.backColor?.hexColor
             menuActions.append(contentsOf: [menuAction])
         })

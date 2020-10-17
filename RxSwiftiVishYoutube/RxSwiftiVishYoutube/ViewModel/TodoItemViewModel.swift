@@ -15,20 +15,13 @@ protocol TodoItemViewDelegate : class {
     func onDoneSelected()
 }
 
-protocol TodoItemPresentable {
-    var id : String? { get }
-    var textValue : String? { get }
-    var isDone : Bool? { get set }
-    var menuItems : [TodoMenuItemViewPresentable]? { get }
-}
-
 //MARK:- Class TodoItemViewModel
 class TodoItemViewModel : TodoItemPresentable{
     var isDone: Bool? = false
-    var menuItems: [TodoMenuItemViewPresentable]? = []
     var id: String? = "0"
     var textValue: String?
     weak var parent: TodoViewDelegate?
+    var menuItems: [TodoMenuItemViewPresentable]? = []
     
     
     init(id: String, textValue : String, parentViewModel : TodoViewDelegate) {
@@ -38,11 +31,12 @@ class TodoItemViewModel : TodoItemPresentable{
         
         let removeMenuItem = RemoveMenuItemViewModel(parentViewModel: self)
         removeMenuItem.title = "Remove"
-        removeMenuItem.backColor = "ff0000"
+        removeMenuItem.backColor = Constants.RED_COLOR  
         
         let doneMenuItem = DoneMenuItemViewModel(parentViewModel: self)
         doneMenuItem.title = isDone! ? "Undone" : "Done"
-        doneMenuItem.backColor = "0000ff"
+        doneMenuItem.backColor = Constants.BLUE_COLOR
+        
         menuItems?.append(contentsOf: [removeMenuItem, doneMenuItem])
     }
 }

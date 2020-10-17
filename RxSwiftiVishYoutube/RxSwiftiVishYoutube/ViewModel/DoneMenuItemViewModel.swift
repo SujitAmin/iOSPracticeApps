@@ -11,7 +11,6 @@ import Foundation
 //MARK:- DoneMenuItemViewModel
 class  DoneMenuItemViewModel : TodoMenuItemViewModel {
     override func onMenuItemSelected() {
-        print("Done item selected")
         parent?.onDoneSelected()
     }
 }

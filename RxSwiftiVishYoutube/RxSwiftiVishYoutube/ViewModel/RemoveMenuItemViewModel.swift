@@ -11,7 +11,6 @@ import Foundation
 //MARK:- RemoveMenuItemViewModel
 class RemoveMenuItemViewModel: TodoMenuItemViewModel {
     override func onMenuItemSelected() {
-         print("Remove item selected")
         parent?.onRemoveSelected()
     }
 }

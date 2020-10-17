@@ -20,6 +20,13 @@ protocol TodoViewPresentable {
     var newTodoValue : String? { get }
 }
 
+protocol TodoItemPresentable {
+    var id : String? { get }
+    var textValue : String? { get }
+    var isDone : Bool? { get set }
+    var menuItems : [TodoMenuItemViewPresentable]? { get }
+}
+
 //MARK:- Class TodoViewModel
 class TodoViewModel : TodoViewPresentable {
     var newTodoValue: String?
@@ -34,18 +41,27 @@ class TodoViewModel : TodoViewPresentable {
         let item3 = TodoItemViewModel(id: "3", textValue : "Wash Car", parentViewModel: self)
         items.append(contentsOf: [item1, item2, item3])
     }
-    
-    
 }
 
 //MARK:- Extension
 extension TodoViewModel : TodoViewDelegate {
+    func onAddTodoItem() {
+        guard let newValue = newTodoItem else {return}
+        let newIndex = items.count + 1
+        let item = TodoItemViewModel(id: "\(newIndex)", textValue: newValue, parentViewModel: self)
+        items.append(contentsOf: [item])
+        self.newTodoItem = ""
+        self.view?.insertTodoItem()
+    }
+    func onTodoDelete(todoId: String) {
+        guard let index = self.items.firstIndex(where:  {$0.id! == todoId}) else { return }
+        self.items.remove(at: index)
+        self.view?.removeTodoItem(index: index)
+    }
+    
     func onTodoDone(todoId: String) {
-        print("Todo Item done with id = \(todoId)")
-        guard let index = self.items.index(where:  {$0.id! == todoId}) else {
-            print("Index: does not exist")
-            return
-        }
+        guard let index = self.items.firstIndex(where:  {$0.id! == todoId}) else { return }
+        
         var todoItem = self.items[index]
         todoItem.isDone = !(todoItem.isDone)!
         if var doneMenuItem = todoItem.menuItems?.filter({ (todoMenuItem) -> Bool in
@@ -64,23 +80,6 @@ extension TodoViewModel : TodoViewDelegate {
             return !($0.isDone!) && $1.isDone!
         })
         self.view?.reloadItems()
-    }
-    
-    func onAddTodoItem() {
-        guard let newValue = newTodoItem else {return}
-        let newIndex = items.count + 1
-        let item = TodoItemViewModel(id: "\(newIndex)", textValue: newValue, parentViewModel: self)
-        items.append(contentsOf: [item])
-        self.newTodoItem = ""
-        self.view?.insertTodoItem()
-    }
-    func onTodoDelete(todoId: String) {
-        guard let index = self.items.index(where:  {$0.id! == todoId}) else {
-            print("Index: does not exist")
-            return
-        }
-        self.items.remove(at: index)
-        self.view?.removeTodoItem(index: index)
     }
 }
 

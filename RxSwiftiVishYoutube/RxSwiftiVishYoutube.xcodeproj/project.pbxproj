@@ -11,6 +11,7 @@
 		845BE7BD253ABCC400A0BD8E /* DoneMenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE7BC253ABCC400A0BD8E /* DoneMenuItemViewModel.swift */; };
 		845BE7C0253ABCE800A0BD8E /* RemoveMenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE7BF253ABCE800A0BD8E /* RemoveMenuItemViewModel.swift */; };
 		845BE7C3253ABD0800A0BD8E /* TodoMenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE7C2253ABD0800A0BD8E /* TodoMenuItemViewModel.swift */; };
+		845BE7C8253AC58700A0BD8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE7C7253AC58700A0BD8E /* Constants.swift */; };
 		84633ACF253351AC004E3088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84633ACE253351AC004E3088 /* AppDelegate.swift */; };
 		84633AD1253351AC004E3088 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84633AD0253351AC004E3088 /* SceneDelegate.swift */; };
 		84633AD3253351AC004E3088 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84633AD2253351AC004E3088 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		845BE7BC253ABCC400A0BD8E /* DoneMenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMenuItemViewModel.swift; sourceTree = "<group>"; };
 		845BE7BF253ABCE800A0BD8E /* RemoveMenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMenuItemViewModel.swift; sourceTree = "<group>"; };
 		845BE7C2253ABD0800A0BD8E /* TodoMenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMenuItemViewModel.swift; sourceTree = "<group>"; };
+		845BE7C7253AC58700A0BD8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84633ACB253351AC004E3088 /* RxSwiftiVishYoutube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftiVishYoutube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84633ACE253351AC004E3088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84633AD0253351AC004E3088 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		845BE7CA253AC58C00A0BD8E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				845BE7C7253AC58700A0BD8E /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		84633AC2253351AC004E3088 = {
 			isa = PBXGroup;
 			children = (
@@ -80,12 +90,13 @@
 		84633ACD253351AC004E3088 /* RxSwiftiVishYoutube */ = {
 			isa = PBXGroup;
 			children = (
-				845BE7C5253ABEDB00A0BD8E /* Extensions */,
-				84633AEE2533623A004E3088 /* TableViewCell */,
 				84633AED25336218004E3088 /* StoryBoard */,
 				84633AEC2533620A004E3088 /* View Controller */,
-				84633AEB253361FC004E3088 /* Supporting Files */,
 				84633AE2253354B7004E3088 /* ViewModel */,
+				845BE7CA253AC58C00A0BD8E /* Constants */,
+				845BE7C5253ABEDB00A0BD8E /* Extensions */,
+				84633AEE2533623A004E3088 /* TableViewCell */,
+				84633AEB253361FC004E3088 /* Supporting Files */,
 				84633AD7253351AE004E3088 /* Assets.xcassets */,
 				84633ADC253351AE004E3088 /* Info.plist */,
 			);
@@ -228,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845BE7C3253ABD0800A0BD8E /* TodoMenuItemViewModel.swift in Sources */,
+				845BE7C8253AC58700A0BD8E /* Constants.swift in Sources */,
 				84633AE6253359CF004E3088 /* TodoItemTableViewCell.swift in Sources */,
 				845BE7BA253ABC3900A0BD8E /* TodoItemViewModel.swift in Sources */,
 				84633AE4253354E0004E3088 /* TodoViewModel.swift in Sources */,

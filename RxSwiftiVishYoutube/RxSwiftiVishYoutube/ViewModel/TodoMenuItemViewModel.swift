@@ -20,9 +20,6 @@ protocol TodoMenuItemViewDelegate  {
 
 //MARK:- Class TodoMenuItemViewModel
 class TodoMenuItemViewModel : TodoMenuItemViewPresentable, TodoMenuItemViewDelegate {
-    func onMenuItemSelected() {
-        //base class does not require any implementation
-    }
     var title: String?
     var backColor: String?
     weak var parent : TodoItemViewDelegate?
@@ -31,4 +28,7 @@ class TodoMenuItemViewModel : TodoMenuItemViewPresentable, TodoMenuItemViewDeleg
         self.parent = parentViewModel
     }
     
+    func onMenuItemSelected() {
+        //base class does not require any implementation
+    }
 }
