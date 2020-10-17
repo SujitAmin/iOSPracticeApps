@@ -9,93 +9,7 @@
 import Foundation
 import UIKit
 
-protocol TodoMenuItemViewPresentable {
-    var title : String? { get set }
-    var backColor : String? { get }
-}
-
-protocol TodoMenuItemViewDelegate  {
-    func onMenuItemSelected()
-}
-
-class TodoMenuItemViewModel : TodoMenuItemViewPresentable, TodoMenuItemViewDelegate {
-    func onMenuItemSelected() {
-        //base class does not require any implementation
-    }
-    var title: String?
-    var backColor: String?
-    weak var parent : TodoItemViewDelegate?
-    
-    init(parentViewModel: TodoItemViewDelegate) {
-        self.parent = parentViewModel
-    }
-    
-}
-class RemoveMenuItemViewModel: TodoMenuItemViewModel {
-    override func onMenuItemSelected() {
-         print("Remove item selected")
-        parent?.onRemoveSelected()
-    }
-}
-
-class  DoneMenuItemViewModel : TodoMenuItemViewModel {
-    override func onMenuItemSelected() {
-        print("Done item selected")
-        parent?.onDoneSelected()
-    }
-}
-
-protocol TodoItemViewDelegate : class {
-    func onItemSelected()
-    func onRemoveSelected()
-    func onDoneSelected()
-}
-
-protocol TodoItemPresentable {
-    var id : String? { get }
-    var textValue : String? { get }
-    var isDone : Bool? { get set }
-    var menuItems : [TodoMenuItemViewPresentable]? { get }
-}
-
-class TodoItemViewModel : TodoItemPresentable{
-    var isDone: Bool? = false
-    var menuItems: [TodoMenuItemViewPresentable]? = []
-    var id: String? = "0"
-    var textValue: String?
-    weak var parent: TodoViewDelegate?
-    
-    
-    init(id: String, textValue : String, parentViewModel : TodoViewDelegate) {
-        self.id = id
-        self.textValue = textValue
-        self.parent = parentViewModel
-        
-        let removeMenuItem = RemoveMenuItemViewModel(parentViewModel: self)
-        removeMenuItem.title = "Remove"
-        removeMenuItem.backColor = "ff0000"
-        
-        let doneMenuItem = DoneMenuItemViewModel(parentViewModel: self)
-        doneMenuItem.title = isDone! ? "Undone" : "Done"
-        doneMenuItem.backColor = "0000ff"
-        menuItems?.append(contentsOf: [removeMenuItem, doneMenuItem])
-    }
-}
-
-extension TodoItemViewModel : TodoItemViewDelegate {
-    func onRemoveSelected() {
-        parent?.onTodoDelete(todoId: id!)
-    }
-    
-    func onDoneSelected() {
-        parent?.onTodoDone(todoId: id!)
-    }
-    
-    func onItemSelected() {
-        
-    }
-}
-
+//MARK:- Protocols
 protocol TodoViewDelegate : class {
     func onAddTodoItem()
     func onTodoDelete(todoId: String)
@@ -106,10 +20,13 @@ protocol TodoViewPresentable {
     var newTodoValue : String? { get }
 }
 
+//MARK:- Class TodoViewModel
 class TodoViewModel : TodoViewPresentable {
     var newTodoValue: String?
     var newTodoItem : String?
     weak var view : TodoView?
+    var items : [TodoItemPresentable] = []
+    
     init(view : TodoView) {
         self.view = view
         let item1 = TodoItemViewModel(id: "1", textValue : "Washing Clothes", parentViewModel: self)
@@ -117,10 +34,11 @@ class TodoViewModel : TodoViewPresentable {
         let item3 = TodoItemViewModel(id: "3", textValue : "Wash Car", parentViewModel: self)
         items.append(contentsOf: [item1, item2, item3])
     }
-    var items : [TodoItemPresentable] = []
+    
     
 }
 
+//MARK:- Extension
 extension TodoViewModel : TodoViewDelegate {
     func onTodoDone(todoId: String) {
         print("Todo Item done with id = \(todoId)")
@@ -137,30 +55,23 @@ extension TodoViewModel : TodoViewDelegate {
         }
         
         self.items.sort(by: {
-            
             if !($0.isDone!) && !($1.isDone!) {
                 return $0.id! < $1.id!
             }
-            
             if $0.isDone! && $1.isDone! {
                 return $0.id! < $1.id!
             }
-            
             return !($0.isDone!) && $1.isDone!
         })
-        
         self.view?.reloadItems()
     }
     
     func onAddTodoItem() {
-        print("New Value received..")
-        
         guard let newValue = newTodoItem else {return}
         let newIndex = items.count + 1
         let item = TodoItemViewModel(id: "\(newIndex)", textValue: newValue, parentViewModel: self)
         items.append(contentsOf: [item])
         self.newTodoItem = ""
-        
         self.view?.insertTodoItem()
     }
     func onTodoDelete(todoId: String) {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK:- Protocols
 protocol TodoView : class {
     func insertTodoItem()
     func removeTodoItem(index: Int)
@@ -15,6 +16,7 @@ protocol TodoView : class {
     func reloadItems()
 }
 
+//MARK:- Class ViewController
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableViewItems: UITableView!
@@ -41,10 +43,8 @@ class ViewController: UIViewController {
     /// button "Add Item"
     /// - Parameter sender: UIButton
     @IBAction func onAddItem(_ sender: UIButton) {
-        
         guard let newTodoTextValue = textFieldNewItem.text else { return }
         viewModel?.newTodoItem = newTodoTextValue
-        
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.viewModel?.onAddTodoItem()
             
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     
 }
 
-
+//MARK:- Extension
 extension ViewController :  UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.items.count ?? 0
@@ -80,7 +80,6 @@ extension ViewController :  UITableViewDataSource, UITableViewDelegate {
             let menuAction = UIContextualAction(style: .normal, title: menuItem.title) { (action, sourceView, success: (Bool) -> Void) in
                 if let delegate = menuItem as? TodoMenuItemViewDelegate {
                     DispatchQueue.global(qos: .userInitiated).async {
-                        //  self.viewModel?.onDeleteItem(todoId: (itemViewModel?.id)!)
                         delegate.onMenuItemSelected()
                     }
                 }
@@ -109,7 +108,6 @@ extension ViewController : TodoView {
         }
     }
     
-    
     func insertTodoItem() {
         guard let items = viewModel?.items else { return }
         DispatchQueue.main.async { [weak self] in
@@ -127,5 +125,4 @@ extension ViewController : TodoView {
             self.tableViewItems.reloadData()
         }
     }
-    
 }
