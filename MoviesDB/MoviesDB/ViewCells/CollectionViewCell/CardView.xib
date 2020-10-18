@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CardView" customModule="MoviesDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="210"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="322" height="210"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llL-fb-XC3" customClass="CardViewLayout" customModule="MoviesDB" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="302" height="190"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YYt-8L-l2N">
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="190"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YYt-8L-l2N" firstAttribute="leading" secondItem="llL-fb-XC3" secondAttribute="leading" id="0kS-KX-qLR"/>
+                            <constraint firstItem="YYt-8L-l2N" firstAttribute="top" secondItem="llL-fb-XC3" secondAttribute="top" id="A5j-sQ-FzO"/>
+                            <constraint firstAttribute="bottom" secondItem="YYt-8L-l2N" secondAttribute="bottom" id="E2B-z5-UNB"/>
+                            <constraint firstAttribute="trailing" secondItem="YYt-8L-l2N" secondAttribute="trailing" id="qLr-Bg-bd9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="llL-fb-XC3" secondAttribute="bottom" constant="10" id="IJN-dc-Mg3"/>
+                <constraint firstItem="llL-fb-XC3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Iyo-CS-5Ew"/>
+                <constraint firstAttribute="trailing" secondItem="llL-fb-XC3" secondAttribute="trailing" constant="10" id="Teu-TC-Md2"/>
+                <constraint firstItem="llL-fb-XC3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="eoW-GQ-nu8"/>
+            </constraints>
+            <size key="customSize" width="322" height="210"/>
+            <connections>
+                <outlet property="movieImage" destination="YYt-8L-l2N" id="zpR-0F-syW"/>
+                <outlet property="outerView" destination="llL-fb-XC3" id="qC2-FJ-plm"/>
+            </connections>
+            <point key="canvasLocation" x="166.66666666666669" y="139.28571428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

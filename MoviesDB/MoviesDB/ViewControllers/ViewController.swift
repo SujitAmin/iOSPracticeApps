@@ -29,6 +29,8 @@ class ViewController: UIViewController {
         collectionView.isPrefetchingEnabled = true
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        collectionView.register(UINib(nibName: "CardView", bundle: nil), forCellWithReuseIdentifier: Constants.CellIdentifier.collectionViewCell)
         loadData()
     }
     private func loadData() {
@@ -58,13 +60,26 @@ class ViewController: UIViewController {
             let url = temp + temp2
             AF.request(url, method: .get).responseData {
                 (response) in
+                print(response.request?.allHTTPHeaderFields)
+                print(response.request?.urlRequest)
                 guard let data = response.data else { return }
                 DispatchQueue.main.async {
                     self.model = try? newJSONDecoder().decode(Model.self, from: data)
                     let myItem = self.model?.items;
                     self.itemViewModel?.append(contentsOf: myItem?.map({ return  MovieItemViewModel(movieItem: $0)}) ?? [])
                     self.isDataLoading = false;
-                    self.collectionView.reloadData()
+                    guard let count =  myItem?.count else { return }
+                    var array = [IndexPath]()
+                    print("Value : \(count)")
+                    
+                    //reload a part of collectionview
+                    //this method only reloads the part of UICollectionView
+                    if count > 0 {
+                        for i in 0...(count - 1) {
+                            array.append(IndexPath(row: i, section: 0))
+                        }
+                        self.collectionView.reloadItems(at: array)
+                    }
                 }
             }
         }
@@ -83,13 +98,14 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.collectionViewCell, for: indexPath) as? MoviesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.collectionViewCell, for: indexPath) as? CardView
         let urlPosterPath = Constants.URLS.POSTER_PATH_URL + (itemViewModel?[indexPath.row].posterPath ?? "")
         let imageResource : ImageResource = ImageResource(downloadURL: URL(string: urlPosterPath)!, cacheKey: itemViewModel?[indexPath.row].posterPath)
         cell?.movieImage.kf.setImage(with: imageResource, placeholder: UIImage(named: Constants.ImageNames.launchImage))
         cell?.movieImage.contentMode = .scaleToFill
         return cell ?? UICollectionViewCell();
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         overView = itemViewModel?[indexPath.row].overview
         posterImageURL = Constants.URLS.POSTER_PATH_URL + (itemViewModel?[indexPath.row].posterPath)!
@@ -98,18 +114,16 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate 
 }
 extension ViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-        print("Space: \(space)")
-        
-        let size:CGFloat = (collectionView.frame.size.width) / 2.0
-        print("Size : \(size)")
-        return CGSize(width: size, height: size)
+        let size:CGFloat = (collectionView.frame.size.width - 8) / 2.0
+        return CGSize(width: size, height: 300)
     }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView?.collectionViewLayout.invalidateLayout()
-        super.viewWillTransition(to: size, with: coordinator)
+    //between 2 columns
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    //between two rows
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
 }
 

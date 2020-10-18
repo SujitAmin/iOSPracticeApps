@@ -103,7 +103,6 @@ extension ViewController : TodoView {
         guard let items = viewModel?.items else { return }
         DispatchQueue.main.async { [weak self] in
             self?.textFieldNewItem.text = self?.viewModel?.newTodoItem!
-            
             self?.tableViewItems.beginUpdates()
             self?.tableViewItems.insertRows(at: [IndexPath(row: items.count - 1, section: 0)], with: .automatic)
             self?.tableViewItems.endUpdates()

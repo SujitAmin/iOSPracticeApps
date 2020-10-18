@@ -15,6 +15,9 @@
 		84BE506A250D464E000485A4 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE5069250D464E000485A4 /* DetailTableViewCell.swift */; };
 		84BE506C250D4710000485A4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE506B250D4710000485A4 /* DetailViewController.swift */; };
 		84BE5075250D5187000485A4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE5074250D5187000485A4 /* Utils.swift */; };
+		84CACA12253C610300624CCB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CACA10253C610300624CCB /* CardView.swift */; };
+		84CACA13253C610300624CCB /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CACA11253C610300624CCB /* CardView.xib */; };
+		84CACA18253C62D400624CCB /* CardViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CACA17253C62D400624CCB /* CardViewLayout.swift */; };
 		84E45A7C251F28C3003BCC62 /* MovieItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E45A7B251F28C3003BCC62 /* MovieItemViewModel.swift */; };
 		84EE7D1F250D095D00A11251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE7D1E250D095D00A11251 /* AppDelegate.swift */; };
 		84EE7D21250D095D00A11251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE7D20250D095D00A11251 /* SceneDelegate.swift */; };
@@ -24,7 +27,6 @@
 		84EE7D2E250D095F00A11251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EE7D2C250D095F00A11251 /* LaunchScreen.storyboard */; };
 		84EE7D39250D095F00A11251 /* MoviesDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE7D38250D095F00A11251 /* MoviesDBTests.swift */; };
 		84EE7D44250D095F00A11251 /* MoviesDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE7D43250D095F00A11251 /* MoviesDBUITests.swift */; };
-		84EE7D56250D0EDB00A11251 /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE7D55250D0EDB00A11251 /* MoviesCollectionViewCell.swift */; };
 		EE73B4813B8A3024428C8290 /* Pods_MoviesDB_MoviesDBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE4E48F912031846889407C /* Pods_MoviesDB_MoviesDBUITests.framework */; };
 		EFFAC843B07DB87ACE7229F9 /* Pods_MoviesDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A139E66FC3098911E9656E /* Pods_MoviesDBTests.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,9 @@
 		84BE5069250D464E000485A4 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		84BE506B250D4710000485A4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		84BE5074250D5187000485A4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		84CACA10253C610300624CCB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		84CACA11253C610300624CCB /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		84CACA17253C62D400624CCB /* CardViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewLayout.swift; sourceTree = "<group>"; };
 		84E45A7B251F28C3003BCC62 /* MovieItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemViewModel.swift; sourceTree = "<group>"; };
 		84EE7D1B250D095D00A11251 /* MoviesDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EE7D1E250D095D00A11251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +79,6 @@
 		84EE7D3F250D095F00A11251 /* MoviesDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EE7D43250D095F00A11251 /* MoviesDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDBUITests.swift; sourceTree = "<group>"; };
 		84EE7D45250D095F00A11251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84EE7D55250D0EDB00A11251 /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
 		992E4DFB454D4ABC75E5AC74 /* Pods-MoviesDB-MoviesDBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesDB-MoviesDBUITests.release.xcconfig"; path = "Target Support Files/Pods-MoviesDB-MoviesDBUITests/Pods-MoviesDB-MoviesDBUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A91BCFE5EF937FD7ACEFFD3C /* Pods-MoviesDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesDB.release.xcconfig"; path = "Target Support Files/Pods-MoviesDB/Pods-MoviesDB.release.xcconfig"; sourceTree = "<group>"; };
 		D1A139E66FC3098911E9656E /* Pods_MoviesDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +128,7 @@
 			children = (
 				84BE5060250D180B000485A4 /* Constants.swift */,
 				84BE5074250D5187000485A4 /* Utils.swift */,
+				84CACA17253C62D400624CCB /* CardViewLayout.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -230,7 +235,8 @@
 		84EE7D52250D0E2600A11251 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				84EE7D55250D0EDB00A11251 /* MoviesCollectionViewCell.swift */,
+				84CACA10253C610300624CCB /* CardView.swift */,
+				84CACA11253C610300624CCB /* CardView.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 			files = (
 				84EE7D2E250D095F00A11251 /* LaunchScreen.storyboard in Resources */,
 				84EE7D2B250D095F00A11251 /* Assets.xcassets in Resources */,
+				84CACA13253C610300624CCB /* CardView.xib in Resources */,
 				84EE7D26250D095D00A11251 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,14 +515,15 @@
 			files = (
 				84BE506A250D464E000485A4 /* DetailTableViewCell.swift in Sources */,
 				84BE5064250D2365000485A4 /* Model.swift in Sources */,
+				84CACA18253C62D400624CCB /* CardViewLayout.swift in Sources */,
 				84BE505D250D16ED000485A4 /* ViewController.swift in Sources */,
 				84EE7D1F250D095D00A11251 /* AppDelegate.swift in Sources */,
 				84EE7D29250D095D00A11251 /* MoviesDB.xcdatamodeld in Sources */,
 				84BE5066250D23A3000485A4 /* Item.swift in Sources */,
 				84EE7D21250D095D00A11251 /* SceneDelegate.swift in Sources */,
+				84CACA12253C610300624CCB /* CardView.swift in Sources */,
 				84BE5075250D5187000485A4 /* Utils.swift in Sources */,
 				84BE506C250D4710000485A4 /* DetailViewController.swift in Sources */,
-				84EE7D56250D0EDB00A11251 /* MoviesCollectionViewCell.swift in Sources */,
 				84BE5061250D180B000485A4 /* Constants.swift in Sources */,
 				84E45A7C251F28C3003BCC62 /* MovieItemViewModel.swift in Sources */,
 			);
