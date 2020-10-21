@@ -1,0 +1,6 @@
+framework module Pods_RxSwiftiVishYoutube {
+  umbrella header "Pods-RxSwiftiVishYoutube-umbrella.h"
+
+  export *
+  module * { export * }
+}
