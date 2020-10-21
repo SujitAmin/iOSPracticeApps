@@ -43,6 +43,11 @@ class FoodTypesViewController: UITableViewController {
         super.viewDidAppear(animated)
         loadData()
     }
+    
+    func somethingWithData(data: String)  {
+        print("The Universe Boss")
+        print(data)
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return NUMBER_OF_SECTIONS
@@ -68,6 +73,9 @@ class FoodTypesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newFoodTypeVC = segue.destination as? NewFoodTypeViewController {
             newFoodTypeVC.firestore = firestore
+            newFoodTypeVC.onDataAvailable = { [weak self] (data) in
+                self?.somethingWithData(data: data)
+            }
         } else if let foodTypeDetailsVC = segue.destination as? FoodTypesDetailsViewController, let foodType = sender as? FoodType {
             foodTypeDetailsVC.foodType = foodType
             foodTypeDetailsVC.imageCache = imageCache

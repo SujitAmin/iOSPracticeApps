@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoN-b8-b6D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoN-b8-b6D">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +54,7 @@
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
                                     </subviews>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="3rS-pm-RdL" firstAttribute="centerY" secondItem="nv8-li-roD" secondAttribute="centerY" id="4bw-a7-sOw"/>
                                         <constraint firstItem="3rS-pm-RdL" firstAttribute="trailing" secondItem="eVq-Qn-YkW" secondAttribute="trailing" id="H5i-SO-jqq"/>
@@ -97,7 +99,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4o6-jl-k4f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="414" id="7h1-Co-MXl" customClass="ImageCell" customModule="InstagramFeed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="414"/>
@@ -110,7 +112,7 @@
                                             <rect key="frame" x="8" y="8" width="398" height="398"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="h1n-W8-GMw" firstAttribute="top" secondItem="2Xd-b3-3H4" secondAttribute="top" constant="8" id="KVT-vy-eN1"/>
                                         <constraint firstItem="h1n-W8-GMw" firstAttribute="leading" secondItem="2Xd-b3-3H4" secondAttribute="leading" constant="8" id="aKU-am-sL0"/>
@@ -137,7 +139,7 @@
         <!--New Food Item-->
         <scene sceneID="54n-cW-MaC">
             <objects>
-                <viewController title="New Food Item" id="byD-RM-lhv" customClass="NewFoodTypeViewController" customModule="InstagramFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewFoodTypeViewController" title="New Food Item" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byD-RM-lhv" customClass="NewFoodTypeViewController" customModule="InstagramFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ge7-PR-bHH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,7 +160,7 @@
                                             <action selector="dismissKeyBoard" destination="byD-RM-lhv" eventType="primaryActionTriggered" id="GkS-sT-W0a"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-Wq-IR4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-Wq-IR4">
                                         <rect key="frame" x="24.5" y="84" width="200" height="200"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -174,7 +176,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="4YT-v0-JZf">
                                         <rect key="frame" x="0.0" y="334" width="249" height="100"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o7-XN-033">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o7-XN-033">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -187,7 +189,7 @@
                                                     <action selector="setPhoto:" destination="byD-RM-lhv" eventType="touchUpInside" id="eEc-43-dKQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-Nt-qBk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-Nt-qBk">
                                                 <rect key="frame" x="149" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -202,9 +204,9 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCQ-66-EcC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCQ-66-EcC">
                                         <rect key="frame" x="89.5" y="484" width="70" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="iXv-kh-5nR"/>
                                             <constraint firstAttribute="width" constant="70" id="jXj-mn-ZJi"/>
@@ -221,13 +223,13 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="Cdd-L3-tRm"/>
+                        <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="u0T-0c-L9K" firstAttribute="centerY" secondItem="ge7-PR-bHH" secondAttribute="centerY" id="09l-5A-8f6"/>
                             <constraint firstItem="u0T-0c-L9K" firstAttribute="centerX" secondItem="ge7-PR-bHH" secondAttribute="centerX" id="7Tz-pR-tjL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Cdd-L3-tRm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Food Types" id="LUV-bn-R6a"/>
                     <connections>
@@ -261,4 +263,21 @@
             <point key="canvasLocation" x="-4.3478260869565224" y="70.982142857142847"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

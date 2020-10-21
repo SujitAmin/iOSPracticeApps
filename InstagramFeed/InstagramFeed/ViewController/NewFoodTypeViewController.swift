@@ -19,6 +19,9 @@ class NewFoodTypeViewController: UIViewController {
     var firestore : FirestoreService!
     let storage = StorageService.shared
     
+    
+    //this is an example how to pass data using closures.
+    var onDataAvailable : ((_ data : String) -> ())?
     private lazy var pickerController : UIImagePickerController = {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
@@ -28,6 +31,9 @@ class NewFoodTypeViewController: UIViewController {
         super.viewDidLoad()
         
         pickerController.delegate = self
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.onDataAvailable?("how are you?")
     }
     
     @IBAction func dismissKeyBoard() {
@@ -50,6 +56,7 @@ class NewFoodTypeViewController: UIViewController {
             let foodType = FoodType(mainImagePath: urlPaths[0] , title: title, otherImagePaths: [urlPaths[1], urlPaths[2]])
             self?.firestore.save(foodType, completion: { (result) in
                 print(result)
+                
                 self?.hideIndicator()
                 self?.navigationController?.popViewController(animated: true)
             })
