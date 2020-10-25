@@ -19,6 +19,12 @@ class Database {
         
         var todoId : Int? = 1
         
+        let isEmpty = realm.objects(TodoItem.self).filter({ $0.todoValue.lowercased() == todoItemValue.lowercased()}).isEmpty
+        
+        if !isEmpty {
+            return
+        }
+        
         if let lastEntity = realm.objects(TodoItem.self).last {
             todoId = lastEntity.todoId + 1
         }
@@ -29,6 +35,16 @@ class Database {
         
         try! realm.write {
             realm.add(todoItemEntity)
+        }
+    }
+    
+    func softDelete(primaryKey: Int) -> Void {
+        let realm = try! Realm()
+        
+        if let todoItemEntity = realm.object(ofType: TodoItem.self, forPrimaryKey: primaryKey) {
+            try! realm.write {
+                todoItemEntity.deletedAt = Date()
+            }
         }
     }
     
@@ -45,6 +61,16 @@ class Database {
         if let todoItementity = realm.object(ofType: TodoItem.self, forPrimaryKey: primaryKey) {
             try! realm.write{
                 return realm.delete(todoItementity)
+            }
+        }
+    }
+    
+    func isDone(primaryKey: Int) -> Void {
+        let realm = try! Realm()
+        
+        if let todoItemEntity = realm.object(ofType: TodoItem.self, forPrimaryKey: primaryKey) {
+            try! realm.write {
+                todoItemEntity.isDone = !todoItemEntity.isDone
             }
         }
     }

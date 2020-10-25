@@ -15,6 +15,7 @@ class TodoItem: Object {
     @objc dynamic var isDone : Bool = false
     @objc dynamic var createdAt : Date? = Date()
     @objc dynamic var updatedAt : Date?
+    @objc dynamic var deletedAt : Date?
     
     override class func primaryKey() -> String? {
         return "todoId"
