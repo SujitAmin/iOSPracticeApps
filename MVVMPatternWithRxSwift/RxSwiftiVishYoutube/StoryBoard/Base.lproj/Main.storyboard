@@ -18,22 +18,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WLr-GV-3Ri">
-                                <rect key="frame" x="0.0" y="280" width="414" height="556"/>
+                                <rect key="frame" x="0.0" y="250" width="414" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xUS-dG-290">
-                                <rect key="frame" x="0.0" y="140" width="414" height="140"/>
+                                <rect key="frame" x="10" y="140" width="394" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8oh-bc-Tmv">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="mhh-Tc-1zx"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhz-fQ-VKB">
-                                        <rect key="frame" x="0.0" y="75" width="414" height="65"/>
+                                        <rect key="frame" x="0.0" y="55" width="394" height="45"/>
                                         <color key="backgroundColor" red="1" green="0.46666666670000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Add Item">
@@ -44,22 +41,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="8oh-bc-Tmv" firstAttribute="top" secondItem="xUS-dG-290" secondAttribute="top" id="nM1-VD-dBR"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xUS-dG-290" secondAttribute="trailing" id="1AP-6Z-YrC"/>
-                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="top" secondItem="xUS-dG-290" secondAttribute="bottom" id="85d-Zd-JLr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xUS-dG-290" secondAttribute="trailing" constant="10" id="2VJ-Tl-I1j"/>
                             <constraint firstItem="WLr-GV-3Ri" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Gb4-HU-yXz"/>
-                            <constraint firstItem="xUS-dG-290" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HMb-j2-jvo"/>
-                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="top" secondItem="xUS-dG-290" secondAttribute="bottom" id="JIh-4T-XD8"/>
-                            <constraint firstItem="xUS-dG-290" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jm3-4x-8p1"/>
+                            <constraint firstItem="xUS-dG-290" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gFu-dA-NGT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WLr-GV-3Ri" secondAttribute="bottom" constant="26" id="nL2-0d-Zrn"/>
+                            <constraint firstItem="WLr-GV-3Ri" firstAttribute="top" secondItem="xUS-dG-290" secondAttribute="bottom" constant="10" id="qj1-Vs-Hw2"/>
                             <constraint firstItem="WLr-GV-3Ri" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u9k-YW-XU9"/>
+                            <constraint firstItem="xUS-dG-290" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="yS3-3X-Fg2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MVVM using RxSwift " id="9id-WE-G5c"/>

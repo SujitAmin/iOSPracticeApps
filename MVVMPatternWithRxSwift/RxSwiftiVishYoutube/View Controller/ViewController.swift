@@ -29,6 +29,17 @@ class ViewController: UIViewController {
     let cellIdentifier = "todoItemCellIdentifier"
     let nibTodoItemCell = "TodoItemTableViewCell"
     
+    lazy var searchController : UISearchController =  ({
+        let controller  = UISearchController(searchResultsController: nil)
+        controller.dimsBackgroundDuringPresentation = false
+        controller.searchBar.sizeToFit()
+        controller.searchBar.barStyle = UIBarStyle.black
+        controller.searchBar.barTintColor = UIColor.black
+        controller.searchBar.backgroundColor = UIColor.clear
+        controller.searchBar.placeholder = "Search todos...."
+        return controller
+    })()
+    
     fileprivate func setUpTableView() {
         // tableViewItems.dataSource = self
         tableViewItems.delegate = self
@@ -40,9 +51,18 @@ class ViewController: UIViewController {
         setUpTableView()
         viewModel = TodoViewModel(/*view: self*/)
         
-        viewModel?.items.asObservable().bind(to: tableViewItems.rx.items(cellIdentifier: cellIdentifier, cellType: TodoItemTableViewCell.self)) {index,item,cell in
+//        viewModel?.items.asObservable().bind(to: tableViewItems.rx.items(cellIdentifier: cellIdentifier, cellType: TodoItemTableViewCell.self)) {index,item,cell in
+//            cell.configureCell(withViewModel: item)
+//        }.disposed(by: disposeBag)
+        viewModel?.filteredItems.asObservable().bind(to: tableViewItems.rx.items(cellIdentifier: cellIdentifier, cellType: TodoItemTableViewCell.self)) {index,item,cell in
             cell.configureCell(withViewModel: item)
         }.disposed(by: disposeBag)
+        
+        let searchBar = searchController.searchBar
+        tableViewItems.tableHeaderView = searchBar
+        tableViewItems.contentOffset = CGPoint(x: 0, y: 40)
+        
+        searchBar.rx.text.orEmpty.distinctUntilChanged().debug().bind(to: (viewModel?.searchValue)!).disposed(by: disposeBag)
     }
     
     @IBAction func onAddItem(_ sender: UIButton) {
