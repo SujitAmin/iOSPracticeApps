@@ -14,7 +14,7 @@ class Database {
     
     private init() {}
     
-    func createOrUpdate(todoItemValue : String) {
+    func createOrUpdate(todoItemValue : String, todoType : String) {
         let realm = try! Realm()
         
         var todoId : Int? = 1
@@ -32,6 +32,7 @@ class Database {
         let todoItemEntity = TodoItem()
         todoItemEntity.todoId = todoId!
         todoItemEntity.todoValue = todoItemValue
+        todoItemEntity.todoType = todoType
         
         try! realm.write {
             realm.add(todoItemEntity)

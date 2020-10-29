@@ -25,6 +25,7 @@
 		84CB28482545DA2D000B3538 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB28472545DA2D000B3538 /* ApiService.swift */; };
 		84D6AFEB2542A156002E607D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6AFEA2542A156002E607D /* Database.swift */; };
 		84D6AFEE2542A27E002E607D /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6AFED2542A27E002E607D /* TodoItem.swift */; };
+		84FA9F2E254B30F900AD875E /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA9F2D254B30F900AD875E /* SectionViewModel.swift */; };
 		91D0BFEA38CB89BB3C586F4E /* Pods_RxSwiftiVishYoutube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27436A4CFC4AB77100983755 /* Pods_RxSwiftiVishYoutube.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		84CB28472545DA2D000B3538 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		84D6AFEA2542A156002E607D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		84D6AFED2542A27E002E607D /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		84FA9F2D254B30F900AD875E /* SectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
 		8E0A210A6DB934C0982737D2 /* Pods-RxSwiftiVishYoutube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftiVishYoutube.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftiVishYoutube/Pods-RxSwiftiVishYoutube.debug.xcconfig"; sourceTree = "<group>"; };
 		B0E8D2953FF1609278E86D53 /* Pods-RxSwiftiVishYoutube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftiVishYoutube.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftiVishYoutube/Pods-RxSwiftiVishYoutube.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 				84633ADC253351AE004E3088 /* Info.plist */,
 				84D6AFEA2542A156002E607D /* Database.swift */,
 				84D6AFED2542A27E002E607D /* TodoItem.swift */,
+				84FA9F2D254B30F900AD875E /* SectionViewModel.swift */,
 			);
 			path = RxSwiftiVishYoutube;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				84633AD1253351AC004E3088 /* SceneDelegate.swift in Sources */,
 				84D6AFEE2542A27E002E607D /* TodoItem.swift in Sources */,
 				84CB28482545DA2D000B3538 /* ApiService.swift in Sources */,
+				84FA9F2E254B30F900AD875E /* SectionViewModel.swift in Sources */,
 				845BE7C0253ABCE800A0BD8E /* RemoveMenuItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

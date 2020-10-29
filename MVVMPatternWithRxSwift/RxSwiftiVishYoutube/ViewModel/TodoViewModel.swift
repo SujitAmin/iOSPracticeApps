@@ -8,6 +8,7 @@
 
 import RxSwift
 import RealmSwift
+import RxDataSources
 
 //MARK:- Protocols
 protocol TodoViewDelegate : class {
@@ -25,24 +26,26 @@ protocol TodoItemPresentable {
     var id : String? { get }
     var textValue : String? { get }
     var isDone : Bool? { get set }
+    var type: String? { get }
     var menuItems : [TodoMenuItemViewPresentable]? { get }
 }
 
 //MARK:- Class TodoViewModel
 class TodoViewModel : TodoViewPresentable {
     var searchValue: Variable<String> = Variable("")
-    var filteredItems: Variable<[TodoItemPresentable]> = Variable([])
-    
+    var filteredItems: Variable<[TodoItemViewModel]> = Variable([])
+    var dataSource = RxTableViewSectionedAnimatedDataSource<SectionViewModel>(configureCell: { (_,_,_,_) in return UITableViewCell()
+    })
     var newTodoValue: String?
     var newTodoItem : String?
     //weak var view : TodoView?
-    var items : Variable<[TodoItemPresentable]> = Variable([])
+    var items : Variable<[TodoItemViewModel]> = Variable([])
     var database : Database?
     var notificationToken : NotificationToken? = nil
     
     lazy var searchValueObservable : Observable<String> = self.searchValue.asObservable()
-    lazy var itemsObservable : Observable<[TodoItemPresentable]> = self.items.asObservable()
-    lazy var filteredItemsObservable : Observable<[TodoItemPresentable]> = self.filteredItems.asObservable()
+    lazy var itemsObservable : Observable<[TodoItemViewModel]> = self.items.asObservable()
+    lazy var filteredItemsObservable : Observable<[TodoItemViewModel]> = self.filteredItems.asObservable()
     
     let disposeBag = DisposeBag()
     
@@ -69,7 +72,8 @@ class TodoViewModel : TodoViewPresentable {
                     let todoItemEntity = todoItemEntity
                     let itemIndex = todoItemEntity.todoId
                     let newValue = todoItemEntity.todoValue
-                    let newItem = TodoItemViewModel(id: "\(itemIndex)", textValue: newValue, parentViewModel:  self!)
+                    let type = todoItemEntity.todoType
+                    let newItem = TodoItemViewModel(id: "\(itemIndex)", textValue: newValue, type: type, parentViewModel:  self!)
                     self?.items.value.append(newItem)
                 })
                 break
@@ -78,7 +82,8 @@ class TodoViewModel : TodoViewPresentable {
                     let todoItemEntity = todoItemResults![index]
                     let itemIndex = todoItemEntity.todoId
                     let newValue = todoItemEntity.todoValue
-                    let newItem = TodoItemViewModel(id: "\(itemIndex)", textValue: newValue, parentViewModel:  self!)
+                    let type = todoItemEntity.todoType
+                    let newItem = TodoItemViewModel(id: "\(itemIndex)", textValue: newValue, type: type, parentViewModel:  self!)
                     self?.items.value.append(newItem)
                 }
                 
@@ -154,8 +159,8 @@ class TodoViewModel : TodoViewPresentable {
             if let todosArray = jsonResponse["todos"].array {
                 todosArray.forEach { (todoItemDict) in
                     if let itemDict = todoItemDict.dictionary {
-                        if let id = itemDict["id"]?.int, let value = itemDict["value"]?.string {
-                            self.database?.createOrUpdate(todoItemValue: value)
+                        if let id = itemDict["id"]?.int, let value = itemDict["value"]?.string, let type = itemDict["type"]?.string {
+                            self.database?.createOrUpdate(todoItemValue: value, todoType: type)
                         }
                     }
                 }
@@ -181,7 +186,7 @@ extension TodoViewModel : TodoViewDelegate {
         //        items.value.append(contentsOf: [item])
         //        self.newTodoItem = ""
         //self.view?.insertTodoItem()
-        database?.createOrUpdate(todoItemValue: newValue)
+        database?.createOrUpdate(todoItemValue: newValue, todoType: "Personal")
         self.newTodoItem = ""
     }
     func onTodoDelete(todoId: String) {

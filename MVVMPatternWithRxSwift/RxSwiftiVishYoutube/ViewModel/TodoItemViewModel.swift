@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import RxSwift
+import RxDataSources
+import RxCocoa
 
 //MARK:- Protocols
 protocol TodoItemViewDelegate : class {
@@ -19,15 +22,17 @@ protocol TodoItemViewDelegate : class {
 class TodoItemViewModel : TodoItemPresentable{
     var isDone: Bool? = false
     var id: String? = "0"
+    var type: String?
     var textValue: String?
     weak var parent: TodoViewDelegate?
     var menuItems: [TodoMenuItemViewPresentable]? = []
     
     
-    init(id: String, textValue : String, parentViewModel : TodoViewDelegate) {
+    init(id: String, textValue : String, type : String ,parentViewModel : TodoViewDelegate) {
         self.id = id
         self.textValue = textValue
         self.parent = parentViewModel
+        self.type = type
         
         let removeMenuItem = RemoveMenuItemViewModel(parentViewModel: self)
         removeMenuItem.title = "Remove"
@@ -53,5 +58,16 @@ extension TodoItemViewModel : TodoItemViewDelegate {
     
     func onItemSelected() {
         
+    }
+}
+
+extension TodoItemViewModel : IdentifiableType, Equatable {
+    typealias Identity = String
+    var identity: String {
+        return id!
+    }
+    
+    static func == (lhs: TodoItemViewModel, rhs: TodoItemViewModel) -> Bool {
+        return lhs.id! == rhs.id!
     }
 }

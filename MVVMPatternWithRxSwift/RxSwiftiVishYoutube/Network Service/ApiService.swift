@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 protocol ApiServiceProtocol {
    associatedtype ResponseData
@@ -25,7 +26,8 @@ class ApiService : ApiServiceProtocol{
     typealias ResponseData = Data
     
     func fetchAllTodos(/*completion: @escaping (Data) -> Void*/) -> (Observable<JSON>) {
-        let url = URL(string: "https://run.mocky.io/v3/15471230-bf35-42b5-9fbc-551df4227d54")
+        //let url = URL(string: "https://run.mocky.io/v3/15471230-bf35-42b5-9fbc-551df4227d54")
+        let url = URL(string: "https://run.mocky.io/v3/ec746705-1f65-46c9-bed1-0c44d0b23a9d")
         
         return Observable.create ({ (observer) -> Disposable in
             let request = AF.request(url!).responseJSON { (response) in
@@ -51,8 +53,5 @@ class ApiService : ApiServiceProtocol{
                 request.cancel()
             }
         })
-        
-        
     }
-    
 }

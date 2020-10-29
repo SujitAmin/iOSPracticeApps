@@ -54,10 +54,38 @@ class ViewController: UIViewController {
 //        viewModel?.items.asObservable().bind(to: tableViewItems.rx.items(cellIdentifier: cellIdentifier, cellType: TodoItemTableViewCell.self)) {index,item,cell in
 //            cell.configureCell(withViewModel: item)
 //        }.disposed(by: disposeBag)
-        viewModel?.filteredItems.asObservable().bind(to: tableViewItems.rx.items(cellIdentifier: cellIdentifier, cellType: TodoItemTableViewCell.self)) {index,item,cell in
-            cell.configureCell(withViewModel: item)
-        }.disposed(by: disposeBag)
+
+//        viewModel?.filteredItems.asObservable().bind(to: tableViewItems.rx.items(cellIdentifier: cellIdentifier, cellType: TodoItemTableViewCell.self)) {index,item,cell in
+//            cell.configureCell(withViewModel: item)
+//        }.disposed(by: disposeBag)
         
+        viewModel?.dataSource.configureCell = { (datasource, tableView, indexPath, item) in
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as? TodoItemTableViewCell
+            cell?.configureCell(withViewModel: item)
+            return cell!
+        }
+        
+        viewModel?.dataSource.titleForHeaderInSection = { (dataSource, index) in
+            let section = dataSource[index]
+            return section.header
+        }
+        
+        viewModel?.dataSource.canEditRowAtIndexPath = { _,_ in
+            return true;
+        }
+        
+        if let todoDataSource = viewModel?.dataSource {
+            viewModel?.filteredItems
+                .asObservable()
+                .map({ [
+                        SectionViewModel(header: "Personal", items: $0.filter({ $0.type == "Personal"
+                        })),
+                        SectionViewModel(header: "Work", items: $0.filter({ $0.type == "Work"
+                        }))] })
+                .asObservable()
+                .bind(to: tableViewItems.rx.items(dataSource: todoDataSource))
+                .disposed(by: disposeBag)
+        }
         let searchBar = searchController.searchBar
         tableViewItems.tableHeaderView = searchBar
         tableViewItems.contentOffset = CGPoint(x: 0, y: 40)
