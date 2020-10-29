@@ -8,10 +8,13 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
+import RxSwift
+import RxCocoa
 
 protocol ApiServiceProtocol {
    associatedtype ResponseData
-   func fetchAllTodos(completion: @escaping (ResponseData) -> Void)
+   func fetchAllTodos(/*completion: @escaping (ResponseData) -> Void*/) -> (Observable<JSON>)
 }
 
 class ApiService : ApiServiceProtocol{
@@ -21,15 +24,34 @@ class ApiService : ApiServiceProtocol{
     
     typealias ResponseData = Data
     
-    func fetchAllTodos(completion: @escaping (Data) -> Void) {
+    func fetchAllTodos(/*completion: @escaping (Data) -> Void*/) -> (Observable<JSON>) {
         let url = URL(string: "https://run.mocky.io/v3/15471230-bf35-42b5-9fbc-551df4227d54")
-        AF.request(url!).responseJSON { (response) in
-            print(response.response?.statusCode)
-            print(response.request)
-            print(response.data)
-            
-            completion(response.data!)
-        }
+        
+        return Observable.create ({ (observer) -> Disposable in
+            let request = AF.request(url!).responseJSON { (response) in
+                switch (response.result) {
+                case .success(let value):
+                    
+                    if let statusCode = response.response?.statusCode, statusCode == 200 {
+                        let responseJson = JSON(value)
+                        observer.onNext(responseJson)
+                        observer.onCompleted()
+                    } else {
+                        print("Error");
+                        observer.onError(NSError(domain: "Yocket", code: -1, userInfo: nil))
+                    }
+                    break;
+                case .failure(let error):
+                    print("Something went wrong!")
+                    observer.onError(NSError(domain: "Yocket", code: -1, userInfo: nil))
+                    break;
+                }
+            }
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+        
         
     }
     

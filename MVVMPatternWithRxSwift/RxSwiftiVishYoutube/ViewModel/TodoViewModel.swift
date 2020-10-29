@@ -8,6 +8,7 @@
 
 import RxSwift
 import RealmSwift
+
 //MARK:- Protocols
 protocol TodoViewDelegate : class {
     func onAddTodoItem()
@@ -132,22 +133,42 @@ class TodoViewModel : TodoViewPresentable {
     
     fileprivate func fetchTodos() {
         //self.view = view
-        ApiService.sharedInstance.fetchAllTodos { (data) in
-            print(data)
-            if let todosDict = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                if let todosArray = todosDict["todos"] as? NSArray {
-                    todosArray.forEach { (todoItemDict) in
-                        if let itemDict = todoItemDict as? [String : Any] {
-                            //print(itemDict["id"])
-                            //print(itemDict["value"])
-                            if let _ = itemDict["id"], let value = itemDict["value"] as? String{
-                                self.database?.createOrUpdate(todoItemValue: value)
-                            }
+//        ApiService.sharedInstance.fetchAllTodos { (data) in
+//            print(data)
+//            if let todosDict = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                if let todosArray = todosDict["todos"] as? NSArray {
+//                    todosArray.forEach { (todoItemDict) in
+//                        if let itemDict = todoItemDict as? [String : Any] {
+//                            //print(itemDict["id"])
+//                            //print(itemDict["value"])
+//                            if let _ = itemDict["id"], let value = itemDict["value"] as? String{
+//                                self.database?.createOrUpdate(todoItemValue: value)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        let todosObservable = ApiService.sharedInstance.fetchAllTodos()
+        todosObservable.subscribe { (jsonResponse) in
+            if let todosArray = jsonResponse["todos"].array {
+                todosArray.forEach { (todoItemDict) in
+                    if let itemDict = todoItemDict.dictionary {
+                        if let id = itemDict["id"]?.int, let value = itemDict["value"]?.string {
+                            self.database?.createOrUpdate(todoItemValue: value)
                         }
                     }
                 }
             }
+            print(jsonResponse)
+        } onError: { (error) in
+            print(error)
+        } onCompleted: {
+            print("Request completed")
+        } onDisposed: {
+            print("Disposed...")
         }
+
     }
 }
 
