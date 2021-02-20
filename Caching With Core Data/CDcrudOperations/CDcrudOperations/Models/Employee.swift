@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Employee
-{
+struct Employee {
     var name, email : String?
     var profilePicture: Data?
     let id: UUID

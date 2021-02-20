@@ -1,18 +1,20 @@
 //
-//  DetailsVCExtension.swift
-//  CDcrudOperations
+//  EmployeeDetailExtensions.swift
+//  CDRelationships
 //
-//  Created by CodeCat15 on 6/19/20.
+//  Created by CodeCat15 on 7/10/20.
 //  Copyright © 2020 CodeCat15. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-extension DetailVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EmployeeDetailVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
+    // MARK: Image picker delegate method
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let img = info[.originalImage] as? UIImage
-        self.imgProfilePicture.image = img
+        self.imgEmployeeProfilePicture.image = img
         dismiss(animated: true, completion: nil)
     }
 }

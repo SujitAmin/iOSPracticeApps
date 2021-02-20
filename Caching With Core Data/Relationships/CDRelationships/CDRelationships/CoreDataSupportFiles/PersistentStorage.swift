@@ -1,11 +1,10 @@
 //
 //  PersistentStorage.swift
-//  CDcrudOperations
+//  CDRelationships
 //
-//  Created by CodeCat15 on 6/19/20.
+//  Created by CodeCat15 on 7/10/20.
 //  Copyright © 2020 CodeCat15. All rights reserved.
 //
-
 import Foundation
 import CoreData
 
@@ -16,7 +15,7 @@ final class PersistentStorage {
 
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CDcrudOperations")
+        let container = NSPersistentContainer(name: "CDRelationships")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
 
@@ -27,8 +26,8 @@ final class PersistentStorage {
     }()
 
     lazy var context = persistentContainer.viewContext
-    
     // MARK: - Core Data Saving support
+
     func saveContext() {
         if context.hasChanges {
             do {
@@ -43,13 +42,11 @@ final class PersistentStorage {
     func fetchManagedObject<T: NSManagedObject>(managedObject: T.Type) -> [T]? {
         do {
             guard let result = try PersistentStorage.shared.context.fetch(managedObject.fetchRequest()) as? [T] else {return nil}
-            
             return result
-
         } catch let error {
             debugPrint(error)
         }
         return nil
     }
+    
 }
-

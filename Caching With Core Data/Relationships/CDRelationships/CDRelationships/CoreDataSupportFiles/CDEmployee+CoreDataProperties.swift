@@ -1,8 +1,8 @@
 //
 //  CDEmployee+CoreDataProperties.swift
-//  CDcrudOperations
+//  CDRelationships
 //
-//  Created by CodeCat15 on 6/19/20.
+//  Created by CodeCat15 on 7/10/20.
 //  Copyright © 2020 CodeCat15. All rights reserved.
 //
 //
@@ -20,10 +20,7 @@ extension CDEmployee {
     @NSManaged public var email: String?
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
-    @NSManaged public var profilePic: Data?
-
-    func convertToEmployee() -> Employee {
-        return Employee(name: self.name, email: self.email, profilePicture: self.profilePic, id: self.id!)
-    }
+    @NSManaged public var profilePicture: Data?
+    @NSManaged public var toPassport: CDPassport?
 
 }
