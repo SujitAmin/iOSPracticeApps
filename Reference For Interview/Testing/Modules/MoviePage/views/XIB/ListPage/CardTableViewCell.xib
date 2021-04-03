@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="244" id="KGk-i7-Jjw" customClass="CardTableViewCell" customModule="Testing" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJk-Is-8CJ" customClass="MaterialCard" customModule="Testing" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="300" height="224"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ok-AU-Ib3">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="172.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="172.5" id="Fdf-0g-M8G"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kg7-ma-qvy" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="0.0" y="193.5" width="300" height="30.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30.5" id="GOz-Hk-2mo"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="33"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cP7-an-9c9">
+                                <rect key="frame" x="0.0" y="172.5" width="300" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9Rf-Hz-rNT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cP7-an-9c9" firstAttribute="leading" secondItem="gJk-Is-8CJ" secondAttribute="leading" id="1Z4-QD-1dl"/>
+                            <constraint firstAttribute="trailing" secondItem="cP7-an-9c9" secondAttribute="trailing" id="86B-0n-Nr6"/>
+                            <constraint firstItem="kg7-ma-qvy" firstAttribute="leading" secondItem="gJk-Is-8CJ" secondAttribute="leading" id="DMW-9o-BVu"/>
+                            <constraint firstItem="2ok-AU-Ib3" firstAttribute="leading" secondItem="gJk-Is-8CJ" secondAttribute="leading" id="H3w-KH-FIZ"/>
+                            <constraint firstAttribute="bottom" secondItem="kg7-ma-qvy" secondAttribute="bottom" id="MpG-mR-i81"/>
+                            <constraint firstAttribute="trailing" secondItem="kg7-ma-qvy" secondAttribute="trailing" id="U6M-4y-d56"/>
+                            <constraint firstItem="kg7-ma-qvy" firstAttribute="top" secondItem="cP7-an-9c9" secondAttribute="bottom" id="Z5W-hV-zIY"/>
+                            <constraint firstItem="cP7-an-9c9" firstAttribute="top" secondItem="2ok-AU-Ib3" secondAttribute="bottom" id="nZQ-l8-ApN"/>
+                            <constraint firstAttribute="trailing" secondItem="2ok-AU-Ib3" secondAttribute="trailing" id="rNn-Eo-okp"/>
+                            <constraint firstItem="2ok-AU-Ib3" firstAttribute="top" secondItem="gJk-Is-8CJ" secondAttribute="top" id="xPI-a3-H6B"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="gJk-Is-8CJ" secondAttribute="trailing" constant="10" id="GD4-cB-ugn"/>
+                    <constraint firstItem="gJk-Is-8CJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Uce-hz-sce"/>
+                    <constraint firstAttribute="bottom" secondItem="gJk-Is-8CJ" secondAttribute="bottom" constant="10" id="sET-kf-fch"/>
+                    <constraint firstItem="gJk-Is-8CJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="viB-Ij-NYo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardView" destination="gJk-Is-8CJ" id="Fjj-tT-NGz"/>
+                <outlet property="movieImage" destination="2ok-AU-Ib3" id="G9w-6P-dYV"/>
+                <outlet property="name" destination="cP7-an-9c9" id="Buy-gI-ca0"/>
+                <outlet property="ratings" destination="kg7-ma-qvy" id="klG-b4-f38"/>
+            </connections>
+            <point key="canvasLocation" x="-30.434782608695656" y="22.767857142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
